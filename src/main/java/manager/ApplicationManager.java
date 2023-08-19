@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import pages.MainPage;
 
 import java.io.File;
 import java.io.FileReader;
@@ -30,6 +31,8 @@ public class ApplicationManager {
 
     // changed for WD listener
     EventFiringWebDriver driver; // WebDriver driver;
+
+    MainPage mainPage;
 
 //    HelperLogin helperLogin;
 //
@@ -57,6 +60,10 @@ public class ApplicationManager {
 
     public WebDriverWait getWait() {
         return wait;
+    }
+
+    public MainPage getMainPage() {
+        return mainPage;
     }
 
 //    public HelperLogin getHelperLogin() {
@@ -102,6 +109,7 @@ public class ApplicationManager {
 
 
         driver.register(new WebDriverListener());
+        mainPage = new MainPage(driver); // ObjectName someName = New ObjectName()
 //        helperLogin = new HelperLogin(driver);
 //        helperLogout = new HelperLogout(driver);
 //        helperMainPage = new HelperMainPage(driver);
